@@ -7,6 +7,8 @@ public class Test {
     private static String filename;
 
     public static void main(String[] args) throws FileNotFoundException {
+        long start = System.currentTimeMillis();
+
         if(Integer.parseInt(args[0]) == 1) {
             cache = new Cache(Integer.parseInt(args[1]));
             System.out.println("First level cache with " + args[1] + " entries has been created\n");
@@ -32,7 +34,7 @@ public class Test {
             }
         }
         double ref1 = cache.getRefs(1);
-        double  hit1 = cache.getHits(1);
+        double hit1 = cache.getHits(1);
         double hitRatio1 = hit1/ref1;
 
         if(Integer.parseInt(args[0]) == 1) {
@@ -58,6 +60,10 @@ public class Test {
             System.out.println("The number of 2nd-level cache hits: " + hit2);
             System.out.println("The 2nd-level cache hit ratio: " + hitRatio2);
         }
+
+        long end = System.currentTimeMillis();
+
+        System.out.println("\nRuntime in ms: " + (end-start));
 
     }
 }
